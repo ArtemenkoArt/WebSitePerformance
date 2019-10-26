@@ -42,14 +42,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\SiteStatistic.cs" />
-    <Compile Include="SitemapParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Contracts\ISiteMapHandler.cs" />
+    <Compile Include="Services\Implementations\RobotsFileParser.cs" />
+    <Compile Include="Services\Implementations\SiteMapHandler.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\WebSitePerformance.Web\WebSitePerformance.Web.csproj">
-      <Project>{9ae0ae47-063f-49ee-a266-ad670fa713ec}</Project>
-      <Name>WebSitePerformance.Web</Name>
-    </ProjectReference>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

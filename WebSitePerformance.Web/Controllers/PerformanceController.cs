@@ -1,13 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Web.Mvc;
+using WebSitePerformance.Core.Models;
+using WebSitePerformance.Core.Services.Contracts;
+using WebSitePerformance.Core.Services.Implementations;
 
 namespace WebSitePerformance.Web.Controllers
 {
     public class PerformanceController : Controller
     {
+        private SiteMapHandler _siteMapHandler;
+
+        public PerformanceController()
+        {
+            
+        }
+
         // GET: Performance
         public ActionResult Index()
         {
@@ -28,8 +35,9 @@ namespace WebSitePerformance.Web.Controllers
 
         // POST: Performance/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(string siteUrl)
         {
+            IEnumerable<SiteStatistic> list = SiteMapHandler.GetStatistic(siteUrl);
             try
             {
                 // TODO: Add insert logic here

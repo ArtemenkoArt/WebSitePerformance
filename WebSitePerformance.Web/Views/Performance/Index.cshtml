@@ -1,0 +1,16 @@
+﻿@model string
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Start test</h2>
+
+@using (Html.BeginForm("Create","Performance", FormMethod.Post))
+{
+    <p>Enter site URL:</p>
+    @Html.TextBox("siteUrl", "https://a-level.com.ua/")
+    <p align="center">
+        <input class="actionButtons" type="submit" value="Start test" />
+    </p>
+}
