@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29411.108
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.705
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSitePerformance.Web", "WebSitePerformance.Web\WebSitePerformance.Web.csproj", "{9AE0AE47-063F-49EE-A266-AD670FA713EC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSitePerformance.Core", "WebSitePerformance.Core\WebSitePerformance.Core.csproj", "{5EF41592-143E-4470-9651-B631FF1C6D19}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSitePerformance.Dal", "WebSitePerformance.Dal\WebSitePerformance.Dal.csproj", "{EFB9854B-232D-48A6-9890-7939AA03F6A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{5EF41592-143E-4470-9651-B631FF1C6D19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EF41592-143E-4470-9651-B631FF1C6D19}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5EF41592-143E-4470-9651-B631FF1C6D19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFB9854B-232D-48A6-9890-7939AA03F6A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFB9854B-232D-48A6-9890-7939AA03F6A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFB9854B-232D-48A6-9890-7939AA03F6A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFB9854B-232D-48A6-9890-7939AA03F6A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

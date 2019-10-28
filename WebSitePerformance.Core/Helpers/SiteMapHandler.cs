@@ -54,14 +54,14 @@ namespace WebSitePerformance.Core.Services.Implementations
             var pageList = GetPageList(url);
 
             List<PageStatistic> pageStatisticList = new List<PageStatistic>();
-
+            var testDate = DateTime.Now;
             foreach (string page in pageList)
             {
                 pageStatisticList.Add(new PageStatistic()
                                         {
                                             SiteUrl = url,
                                             PageUrl = page,
-                                            TestDate = DateTime.Now,
+                                            TestDate = testDate,
                                             ResponseError = GetPagePerformanse(page, out int response),
                                             Response = response,
                                             ResponseMax = 0, //TODO: get max and min in repository

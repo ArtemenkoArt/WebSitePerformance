@@ -1,46 +1,27 @@
 ﻿@model WebSitePerformance.Core.Models.PageStatistic
-
-
-    <div class="row">
-        <div class="col-xs-4">
-            <div>
-                <strong>
-                    @Html.DisplayNameFor(model => model.PageUrl)
-                </strong>
-                @Html.DisplayFor(model => model.PageUrl)
-            </div>
+<div class="row">
+    <div class="col-xs-8">
+        <div>
+            @Html.DisplayFor(model => model.PageUrl)
         </div>
+    </div>
 
-        <div class="col-xs-2">
-            <strong>
-                @Html.DisplayNameFor(model => model.Response)
-            </strong>
-            @Html.DisplayFor(model => model.Response)
-        </div>
+    <div class="col-xs-1">
+        @Html.DisplayFor(model => model.Response)
+    </div>
 
-        <div class="col-xs-2">
-            <strong>
-                @Html.DisplayNameFor(model => model.ResponseMax)
-            </strong>
-            @Html.DisplayFor(model => model.ResponseMax)
-        </div>
+    <div class="col-xs-1">
+        @Html.DisplayFor(model => model.ResponseMax)
+    </div>
 
-        <div class="col-xs-2">
-            <strong>
-                @Html.DisplayNameFor(model => model.ResponseMin)
-            </strong>
-            @Html.DisplayFor(model => model.ResponseMin)
-        </div>
+    <div class="col-xs-1">
+        @Html.DisplayFor(model => model.ResponseMin)
+    </div>
 
-        <div class="col-xs-2">
-            <strong>
-                @Html.DisplayNameFor(model => model.ResponseQty)
-            </strong>
-            @Html.DisplayFor(model => model.ResponseQty)
-            <strong>
-                @Html.DisplayNameFor(model => model.ResponseError)
-            </strong>
+    <div class="col-xs-1">
+        <div>
             @Model.ResponseError
         </div>
     </div>
+</div>
 

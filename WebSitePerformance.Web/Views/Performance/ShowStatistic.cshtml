@@ -36,12 +36,34 @@
     </div>
 
     <div class="well">
-        @foreach (var pageStatistic in Model.PageList)
-        {
-            @Html.Partial("PageStatisticPartional", pageStatistic)
-        }
+        <div class="row">
+            <div class="col-xs-8">
+                <strong> Test site URL </strong>
+            </div>
+
+            <div class="col-xs-1">
+                <strong> Current response </strong>
+            </div>
+
+            <div class="col-xs-1">
+                <strong> Fastest response </strong>
+            </div>
+
+            <div class="col-xs-1">
+                <strong> Slowest response </strong>
+            </div>
+
+            <div class="col-xs-1">
+                <strong> Error </strong>
+            </div>
+        </div>
+
+            @foreach (var pageStatistic in Model.PageList)
+            {
+                @Html.Partial("PageStatisticPartional", pageStatistic)
+            }
+        </div>
     </div>
-</div>
 <p>
     @*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |*@
     @Html.ActionLink("Back", "Index")
