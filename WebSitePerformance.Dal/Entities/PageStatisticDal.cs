@@ -12,8 +12,6 @@ namespace WebSitePerformance.Dal.Entities
         public DateTime TestDate { get; set; }
         public string PageUrl { get; set; }
         public int Response { get; set; }
-        public int ResponseMax { get; set; }
-        public int ResponseMin { get; set; }
         public bool ResponseError { get; set; }
     }
 }

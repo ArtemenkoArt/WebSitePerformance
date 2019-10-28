@@ -9,8 +9,9 @@
 @using (Html.BeginForm("ShowStatistic","Performance", FormMethod.Post))
 {
     <p>Enter site URL:</p>
-    @Html.TextBox("siteUrl", "https://a-level.com.ua/")
-    <p align="center">
+    
+    <p align="left">
+        @Html.TextBox("siteUrl", "https://a-level.com.ua/")
         <input class="actionButtons" type="submit" value="Start test" />
     </p>
 }

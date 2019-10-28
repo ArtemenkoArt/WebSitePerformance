@@ -6,7 +6,7 @@ using WebSitePerformance.Core.Models;
 
 namespace WebSitePerformance.Core.Services.Contracts
 {
-    public interface IPageDataServices
+    public interface IPageStatisticDataServices
     {
         Task Delete(PageStatistic entity);
         Task<PageStatistic> Add(PageStatistic entity);

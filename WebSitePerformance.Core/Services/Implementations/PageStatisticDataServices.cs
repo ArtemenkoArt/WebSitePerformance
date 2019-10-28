@@ -9,12 +9,12 @@ using WebSitePerformance.Dal.Entities;
 
 namespace WebSitePerformance.Core.Services.Implementations
 {
-    public class PageDataServices : IPageDataServices
+    public class PageStatisticDataServices : IPageStatisticDataServices
     {
         private readonly IPageDataRepository _repository;
         private readonly IMapper _mapper;
 
-        public PageDataServices(IPageDataRepository repository, IMapper mapper)
+        public PageStatisticDataServices(IPageDataRepository repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;

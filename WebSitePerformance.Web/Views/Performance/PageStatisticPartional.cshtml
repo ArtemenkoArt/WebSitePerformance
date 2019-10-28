@@ -1,27 +1,33 @@
 ﻿@model WebSitePerformance.Core.Models.PageStatistic
-<div class="row">
-    <div class="col-xs-8">
-        <div>
-            @Html.DisplayFor(model => model.PageUrl)
+    <div class="row">
+        <div class="col-xs-7">
+
+            <div>
+                @Html.DisplayFor(model => model.PageUrl)
+            </div>
         </div>
-    </div>
 
-    <div class="col-xs-1">
-        @Html.DisplayFor(model => model.Response)
-    </div>
-
-    <div class="col-xs-1">
-        @Html.DisplayFor(model => model.ResponseMax)
-    </div>
-
-    <div class="col-xs-1">
-        @Html.DisplayFor(model => model.ResponseMin)
-    </div>
-
-    <div class="col-xs-1">
-        <div>
-            @Model.ResponseError
+        <div class="col-xs-1">
+            @Html.DisplayFor(model => model.Response)
         </div>
+
+        <div class="col-xs-1">
+            @Html.DisplayFor(model => model.ResponseMax)
+        </div>
+
+        <div class="col-xs-1">
+            @Html.DisplayFor(model => model.ResponseMin)
+        </div>
+
+        <div class="col-xs-1">
+            <div>
+                @Model.ResponseError
+            </div>
+        </div>
+
+        <div class="col-xs-1">
+             @Html.ActionLink("History", "HistoryPage", "Performance", new { pageUrl = Model.PageUrl})
+        </div>
+       
     </div>
-</div>
 

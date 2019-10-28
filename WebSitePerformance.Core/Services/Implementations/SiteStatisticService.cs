@@ -9,13 +9,13 @@ using WebSitePerformance.Core.Models;
 
 namespace WebSitePerformance.Core.Helpers
 {
-    public class SiteMapHandler
+    public class SiteStatisticService : ISiteStatisticService
     {
         private HttpWebRequest _request;
         private HttpWebResponse _response;
         private IFileParser _parser;
 
-        public SiteMapHandler(IFileParser parser)
+        public SiteStatisticService(IFileParser parser)
         {
             _parser = parser;
         }
@@ -49,37 +49,30 @@ namespace WebSitePerformance.Core.Helpers
             return false;
         }
 
-        public SiteStatisticViewModel GetStatistic(string url)
+        public List<PageStatistic> GetStatistic(string url)
         {
-            var pageList = GetPageList(url);
+            var pageUrlList = GetPageList(url);
 
-            List<PageStatistic> pageStatisticList = new List<PageStatistic>();
+            List<PageStatistic> pageList = new List<PageStatistic>();
             var testDate = DateTime.Now;
-            foreach (string page in pageList)
+            foreach (string page in pageUrlList)
             {
-                pageStatisticList.Add(new PageStatistic()
+                pageList.Add(new PageStatistic()
                 {
                     SiteUrl = url,
                     PageUrl = page,
                     TestDate = testDate,
                     ResponseError = GetPagePerformanse(page, out int response),
                     Response = response,
-                    ResponseMax = 0, //TODO: get max and min in repository
-                    ResponseMin = 0
                 });
             }
 
-            return new SiteStatisticViewModel()
-            {
-                SiteUrl = pageStatisticList.Max(n => n.SiteUrl),
-                TestDate = pageStatisticList.Min(d => d.TestDate),
-                PageList = pageStatisticList.OrderByDescending(x => x.Response).ToList()
-            };
+            return pageList;
         }
 
         private List<string> GetPageList(string url)
         {
-            string sitemap = new RobotsFileParser().GetSitemapUrl(url);
+            string sitemap = _parser.GetSitemapUrl(url);
             if (String.IsNullOrEmpty(sitemap))
             {
                 return new List<string>();
