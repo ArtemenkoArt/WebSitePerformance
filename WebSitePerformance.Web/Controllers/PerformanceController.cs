@@ -1,52 +1,35 @@
-﻿using System.Collections.Generic;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using WebSitePerformance.Core.Models;
-using WebSitePerformance.Core.Services.Contracts;
 using WebSitePerformance.Core.Services.Implementations;
 
 namespace WebSitePerformance.Web.Controllers
 {
     public class PerformanceController : Controller
     {
-        private SiteMapHandler _siteMapHandler;
-
-        public PerformanceController()
-        {
-            
-        }
-
         // GET: Performance
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: Performance/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
         // GET: Performance/Create
-        public ActionResult Create()
+        public ActionResult ShowStatistic()
         {
             return View();
         }
 
-        // POST: Performance/Create
         [HttpPost]
-        public ActionResult Create(string siteUrl)
+        public ActionResult ShowStatistic(string siteUrl)
         {
-            IEnumerable<SiteStatistic> list = SiteMapHandler.GetStatistic(siteUrl);
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                SiteStatisticViewModel siteStatistics = SiteMapHandler.GetStatistic(siteUrl);
+                return View(siteStatistics);
             }
             catch
             {
-                return View();
+                return RedirectToAction("Index");
+                
             }
         }
 

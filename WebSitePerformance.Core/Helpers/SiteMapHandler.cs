@@ -13,10 +13,16 @@ namespace WebSitePerformance.Core.Services.Implementations
     {
         private static HttpWebRequest _request;
         private static HttpWebResponse _response;
+        private static bool _exitTimer = true;
 
-        private static bool GetPagePerformanse(string pageUrl, out long performance)
+        private static void ChangeTimerStatus()
         {
-            performance = 0;
+            _exitTimer = _exitTimer = true ? false : true;
+        }
+
+        private static bool GetPagePerformanse(string pageUrl, out int response)
+        {
+            response = 0;
             var stopWatch = new Stopwatch();
             stopWatch.Start();
             try
@@ -30,44 +36,54 @@ namespace WebSitePerformance.Core.Services.Implementations
                     StreamReader reader = new StreamReader(dataStream);
                     string responseFromServer = reader.ReadToEnd();
                 }
-                performance = stopWatch.ElapsedMilliseconds;
-                return false;
+                response = (int)stopWatch.ElapsedMilliseconds;
             }
             catch
             {
-                performance = stopWatch.ElapsedMilliseconds;
                 return true;
             }
             finally
             {
                 stopWatch.Stop();
             }
+            return false;
         }
 
-        public static IEnumerable<SiteStatistic> GetStatistic(string url)
+        public static SiteStatisticViewModel GetStatistic(string url)
         {
             var pageList = GetPageList(url);
 
-            List<SiteStatistic> siteStatisticList = new List<SiteStatistic>();
+            List<PageStatistic> pageStatisticList = new List<PageStatistic>();
 
             foreach (string page in pageList)
             {
-                siteStatisticList.Add(
-                    new SiteStatistic()
-                    {
-                        SiteUrl = url,
-                        PageUrl = page,
-                        TestDate = DateTime.Now,
-                        ResponseError = GetPagePerformanse(page, out long performance),
-                        Performance = performance
-                    });
+                pageStatisticList.Add(new PageStatistic()
+                                        {
+                                            SiteUrl = url,
+                                            PageUrl = page,
+                                            TestDate = DateTime.Now,
+                                            ResponseError = GetPagePerformanse(page, out int response),
+                                            Response = response,
+                                            ResponseMax = 0, //TODO: get max and min in repository
+                                            ResponseMin = 0
+                });
             }
-            return siteStatisticList.OrderBy(x => x.Performance);
+
+            return new SiteStatisticViewModel()
+            {
+                SiteUrl = pageStatisticList.Max(n => n.SiteUrl),
+                TestDate = pageStatisticList.Min(d => d.TestDate),
+                PageList = pageStatisticList.OrderByDescending(x => x.Response).ToList()
+            };   
         }
 
         private static List<string> GetPageList(string url)
         {
             string sitemap = RobotsFileParser.GetSitemapUrl(url);
+            if (String.IsNullOrEmpty(sitemap))
+            {
+                return new List<string>();
+            }
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.Load(sitemap);
             XmlNodeList xmlList = xmlDoc.GetElementsByTagName("loc");

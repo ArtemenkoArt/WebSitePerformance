@@ -1,0 +1,36 @@
+﻿@model WebSitePerformance.Core.Models.PageStatistic
+    <div class="row">
+        <div class="progress">
+
+            @if (Model.Response <= 200)
+            {
+                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
+                     aria-valuemin="0" aria-valuemax="100" style="width:40%">
+                    @Model.PageUrl
+                </div>
+            }
+            else if (Model.Response > 200 && Model.Response <= 400)
+            {
+                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="50"
+                     aria-valuemin="0" aria-valuemax="100" style="width:50%">
+                    @Model.PageUrl
+                </div>
+            }
+            else if (Model.Response > 400 && Model.Response <= 600)
+            {
+                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60"
+                     aria-valuemin="0" aria-valuemax="100" style="width:60%">
+                    @Model.PageUrl
+                </div>
+            }
+            else
+            {
+                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70"
+                     aria-valuemin="0" aria-valuemax="100" style="width:70%">
+                    @Model.PageUrl
+                </div>
+            }
+            @Model.Response
+
+        </div>
+    </div>

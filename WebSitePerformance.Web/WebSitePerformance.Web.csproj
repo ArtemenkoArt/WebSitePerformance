@@ -164,6 +164,9 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Performance\Index.cshtml" />
+    <Content Include="Views\Performance\ShowStatistic.cshtml" />
+    <Content Include="Views\Performance\PageStatisticPartional.cshtml" />
+    <Content Include="Views\Performance\PageStatisticPertionalProgress.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

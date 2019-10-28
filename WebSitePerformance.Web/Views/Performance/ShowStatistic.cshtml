@@ -1,0 +1,48 @@
+﻿@model WebSitePerformance.Core.Models.SiteStatisticViewModel
+
+@{
+    ViewBag.Title = "ShowStatistic";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Statistic @Model.SiteUrl</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TestDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TestDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QtyTestPage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QtyTestPage)
+        </dd>
+    </dl>
+
+    <div class="well">
+        @foreach (var pageStatistic in Model.PageList)
+        {
+            @Html.Partial("PageStatisticPertionalProgress", pageStatistic)
+        }
+    </div>
+
+    <div class="well">
+        @foreach (var pageStatistic in Model.PageList)
+        {
+            @Html.Partial("PageStatisticPartional", pageStatistic)
+        }
+    </div>
+</div>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |*@
+    @Html.ActionLink("Back", "Index")
+</p>
