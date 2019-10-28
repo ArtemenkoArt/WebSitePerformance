@@ -7,20 +7,20 @@ using System.Net;
 using System.Xml;
 using WebSitePerformance.Core.Models;
 
-namespace WebSitePerformance.Core.Services.Implementations
+namespace WebSitePerformance.Core.Helpers
 {
-    public static class SiteMapHandler
+    public class SiteMapHandler
     {
-        private static HttpWebRequest _request;
-        private static HttpWebResponse _response;
-        private static bool _exitTimer = true;
+        private HttpWebRequest _request;
+        private HttpWebResponse _response;
+        private IFileParser _parser;
 
-        private static void ChangeTimerStatus()
+        public SiteMapHandler(IFileParser parser)
         {
-            _exitTimer = _exitTimer = true ? false : true;
+            _parser = parser;
         }
 
-        private static bool GetPagePerformanse(string pageUrl, out int response)
+        private bool GetPagePerformanse(string pageUrl, out int response)
         {
             response = 0;
             var stopWatch = new Stopwatch();
@@ -49,7 +49,7 @@ namespace WebSitePerformance.Core.Services.Implementations
             return false;
         }
 
-        public static SiteStatisticViewModel GetStatistic(string url)
+        public SiteStatisticViewModel GetStatistic(string url)
         {
             var pageList = GetPageList(url);
 
@@ -58,14 +58,14 @@ namespace WebSitePerformance.Core.Services.Implementations
             foreach (string page in pageList)
             {
                 pageStatisticList.Add(new PageStatistic()
-                                        {
-                                            SiteUrl = url,
-                                            PageUrl = page,
-                                            TestDate = testDate,
-                                            ResponseError = GetPagePerformanse(page, out int response),
-                                            Response = response,
-                                            ResponseMax = 0, //TODO: get max and min in repository
-                                            ResponseMin = 0
+                {
+                    SiteUrl = url,
+                    PageUrl = page,
+                    TestDate = testDate,
+                    ResponseError = GetPagePerformanse(page, out int response),
+                    Response = response,
+                    ResponseMax = 0, //TODO: get max and min in repository
+                    ResponseMin = 0
                 });
             }
 
@@ -74,12 +74,12 @@ namespace WebSitePerformance.Core.Services.Implementations
                 SiteUrl = pageStatisticList.Max(n => n.SiteUrl),
                 TestDate = pageStatisticList.Min(d => d.TestDate),
                 PageList = pageStatisticList.OrderByDescending(x => x.Response).ToList()
-            };   
+            };
         }
 
-        private static List<string> GetPageList(string url)
+        private List<string> GetPageList(string url)
         {
-            string sitemap = RobotsFileParser.GetSitemapUrl(url);
+            string sitemap = new RobotsFileParser().GetSitemapUrl(url);
             if (String.IsNullOrEmpty(sitemap))
             {
                 return new List<string>();
@@ -90,4 +90,5 @@ namespace WebSitePerformance.Core.Services.Implementations
             return xmlList.Cast<XmlNode>().Select(node => node.InnerText).ToList();
         }
     }
+
 }

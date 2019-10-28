@@ -1,11 +1,21 @@
 ﻿using System.Web.Mvc;
+using WebSitePerformance.Core.Helpers;
 using WebSitePerformance.Core.Models;
-using WebSitePerformance.Core.Services.Implementations;
+using WebSitePerformance.Core.Services.Contracts;
 
 namespace WebSitePerformance.Web.Controllers
 {
     public class PerformanceController : Controller
     {
+        private ISiteMapHandler _handler;
+        private IPageDataServices _service;
+
+        public PerformanceController(ISiteMapHandler handler, IPageDataServices service)
+        {
+            _handler = handler;
+            _service = service;
+        }
+
         // GET: Performance
         public ActionResult Index()
         {
@@ -23,7 +33,7 @@ namespace WebSitePerformance.Web.Controllers
         {
             try
             {
-                SiteStatisticViewModel siteStatistics = SiteMapHandler.GetStatistic(siteUrl);
+                SiteStatisticViewModel siteStatistics = _handler.GetStatistic(siteUrl);
                 return View(siteStatistics);
             }
             catch

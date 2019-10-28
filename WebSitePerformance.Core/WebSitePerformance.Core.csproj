@@ -51,16 +51,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\IFileParser.cs" />
+    <Compile Include="Helpers\ISiteMapHandler.cs" />
+    <Compile Include="Helpers\RobotsFileParser.cs" />
+    <Compile Include="Helpers\SiteMapHandler.cs" />
     <Compile Include="Infrastructure\CoreKernel.cs" />
     <Compile Include="Infrastructure\CoreMapperConfig.cs" />
     <Compile Include="Infrastructure\CoreMapperProfile.cs" />
     <Compile Include="Models\PageStatistic.cs" />
     <Compile Include="Models\SiteStatisticViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Helpers\RobotsFileParser.cs" />
-    <Compile Include="Helpers\SiteMapHandler.cs" />
     <Compile Include="Services\Contracts\IPageDataServices.cs" />
     <Compile Include="Services\Implementations\PageDataServices.cs" />
+    <Compile Include="Services\Implementations\SiteMapServices.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
