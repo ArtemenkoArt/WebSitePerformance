@@ -10,7 +10,7 @@ namespace WebSitePerformance.Dal.Infrastructure
     {
         public static void Initialize(IKernel kernel)
         {
-            kernel.Bind<IPageStatisticDataServices>().To<PageStatisticDataServices>().InRequestScope();
+            kernel.Bind<IPageService>().To<PageService>().InRequestScope();
             kernel.Bind<ISiteStatisticService>().To<SiteStatisticService>().InRequestScope();
             kernel.Bind<IFileParser>().To<RobotsFileParser>().InRequestScope();
             DalKernel.Initialize(kernel);

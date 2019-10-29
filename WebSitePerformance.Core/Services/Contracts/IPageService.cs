@@ -6,7 +6,7 @@ using WebSitePerformance.Core.Models;
 
 namespace WebSitePerformance.Core.Services.Contracts
 {
-    public interface IPageStatisticDataServices
+    public interface IPageService
     {
         Task Delete(PageStatistic entity);
         Task<PageStatistic> Add(PageStatistic entity);
@@ -15,7 +15,7 @@ namespace WebSitePerformance.Core.Services.Contracts
         Task<IEnumerable<PageStatistic>> GetAll();
         IQueryable<PageStatistic> GetItems();
         Task<IEnumerable<PageStatistic>> GetPagesBySiteUrl(string siteUrl);
-        Task<IEnumerable<PageStatistic>> GetPagesBySiteUrlAndTestDate(string siteUrl, DateTime dateTime);
+        Task<IEnumerable<PageStatistic>> GetPagesByTestId(string testId);
         Task<IEnumerable<PageStatistic>> GetPagesBySiteUrlAndPageUrl(string siteUrl, string pageUrl);
     }
 }

@@ -1,0 +1,48 @@
+﻿@model IEnumerable<WebSitePerformance.Core.Models.PageStatistic>
+
+@{
+    ViewBag.Title = "History";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>History</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SiteUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TestDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PageUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Response)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ResponseError)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink(@item.SiteUrl, "ShowHistory", "Performance", new { siteUrl = @item.SiteUrl }, null)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TestDate)
+        </td>
+        <td>
+            @Html.ActionLink(@item.PageUrl, "ShowHistory", "Performance", new { siteUrl = @item.SiteUrl, pageUrl = @item.PageUrl }, null)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Response)
+        </td>
+        <td>
+            @item.ResponseError
+        </td>
+    </tr>
+}
+</table>

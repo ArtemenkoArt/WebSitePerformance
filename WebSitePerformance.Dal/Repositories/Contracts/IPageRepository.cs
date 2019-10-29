@@ -5,10 +5,10 @@ using WebSitePerformance.Dal.Repositories;
 
 namespace WebSitePerformance.Dal.Entities
 {
-    public interface IPageDataRepository : IRepository<PageStatisticDal>
+    public interface IPageRepository : IRepository<PageStatisticDal>
     {
         Task<IEnumerable<PageStatisticDal>> GetPagesBySiteUrl(string siteUrl);
-        Task<IEnumerable<PageStatisticDal>> GetPagesBySiteUrlAndTestDate(string siteUrl, DateTime dateTime);
+        Task<IEnumerable<PageStatisticDal>> GetPagesByTestId(string testId);
         Task<IEnumerable<PageStatisticDal>> GetPagesBySiteUrlAndPageUrl(string siteUrl, string pageUrl);
     }
 }

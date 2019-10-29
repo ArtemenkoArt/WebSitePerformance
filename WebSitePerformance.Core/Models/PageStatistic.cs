@@ -9,13 +9,14 @@ namespace WebSitePerformance.Core.Models
         [Key]
         [ReadOnly(true)]
         public int Id { get; set; }
+        public string TestId { get; set; }
         [Display(Name = "Test site URL")]
         public string SiteUrl { get; set; }
         [Display(Name = "Test date")]
         public DateTime TestDate { get; set; }
         [Display(Name = "Test page URL")]
         public string PageUrl { get; set; }
-        [Display(Name = "Current response")]
+        [Display(Name = "Response")]
         public int Response { get; set; }
         [Display(Name = "Fastest response")]
         public int ResponseMax { get; set; }

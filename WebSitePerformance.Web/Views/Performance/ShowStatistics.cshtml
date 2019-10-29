@@ -1,0 +1,72 @@
+﻿@model WebSitePerformance.Core.Models.SiteStatisticViewModel
+
+@{
+    ViewBag.Title = "ShowStatistics";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <h2>
+        @Html.ActionLink(@Model.SiteUrl, "ShowHistory", "Performance", new { siteUrl = Model.SiteUrl }, null)
+    </h2>
+</div>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TestDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TestDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.QtyTestPage)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.QtyTestPage)
+            </dd>
+        </dl>
+
+        <div class="well">
+            @foreach (var pageStatistic in Model.PageList)
+            {
+                @Html.Partial("PageStatisticPertionalProgress", pageStatistic)
+            }
+        </div>
+
+        <div class="well">
+            <div class="row">
+                <div class="col-xs-8">
+                    <strong> Test page URL </strong>
+                </div>
+
+                <div class="col-xs-1">
+                    <strong> Current response </strong>
+                </div>
+
+                <div class="col-xs-1">
+                    <strong> Slowest response </strong>
+                </div>
+
+                <div class="col-xs-1">
+                    <strong> Fastest response </strong>
+                </div>
+
+                <div class="col-xs-1">
+                    <strong> Error </strong>
+                </div>
+            </div>
+
+            @foreach (var pageStatistic in Model.PageList)
+            {
+                @Html.Partial("PageStatisticPartional", pageStatistic)
+            }
+        </div>
+    </div>
+    <p>
+        @Html.ActionLink("Back", "Index")
+    </p>

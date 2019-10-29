@@ -1,10 +1,7 @@
 ﻿@model WebSitePerformance.Core.Models.PageStatistic
     <div class="row">
-        <div class="col-xs-7">
-
-            <div>
-                @Html.DisplayFor(model => model.PageUrl)
-            </div>
+        <div class="col-xs-8">
+            @Html.ActionLink(@Model.PageUrl, "ShowHistory", "Performance", new { siteUrl = Model.SiteUrl, pageUrl = Model.PageUrl }, null)
         </div>
 
         <div class="col-xs-1">
@@ -23,10 +20,6 @@
             <div>
                 @Model.ResponseError
             </div>
-        </div>
-
-        <div class="col-xs-1">
-             @Html.ActionLink("History", "HistoryPage", "Performance", new { pageUrl = Model.PageUrl})
         </div>
        
     </div>

@@ -61,12 +61,12 @@
     <Compile Include="Context\PageDataContext.cs" />
     <Compile Include="Entities\IEntities.cs" />
     <Compile Include="Infrastructure\DalKernel.cs" />
-    <Compile Include="Repositories\Contracts\IPageDataRepository.cs" />
+    <Compile Include="Repositories\Contracts\IPageRepository.cs" />
     <Compile Include="Entities\PageStatisticDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Implementations\GenericRepository.cs" />
     <Compile Include="Repositories\Contracts\IRepository.cs" />
-    <Compile Include="Repositories\Implementations\PageDataRepository.cs" />
+    <Compile Include="Repositories\Implementations\PageRepository.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -52,7 +52,7 @@ namespace WebSitePerformance.Core.Helpers
         public List<PageStatistic> GetStatistic(string url)
         {
             var pageUrlList = GetPageList(url);
-
+            var testId = Guid.NewGuid().ToString("N");
             List<PageStatistic> pageList = new List<PageStatistic>();
             var testDate = DateTime.Now;
             foreach (string page in pageUrlList)
@@ -62,6 +62,7 @@ namespace WebSitePerformance.Core.Helpers
                     SiteUrl = url,
                     PageUrl = page,
                     TestDate = testDate,
+                    TestId = testId,
                     ResponseError = GetPagePerformanse(page, out int response),
                     Response = response,
                 });

@@ -11,7 +11,7 @@ namespace WebSitePerformance.Dal.Infrastructure
         public static void Initialize(IKernel kernel)
         {
             kernel.Bind<IPageDataContext>().To<PageDataContext>();
-            kernel.Bind<IPageDataRepository>().To<PageDataRepository>().InRequestScope();
+            kernel.Bind<IPageRepository>().To<PageRepository>().InRequestScope();
         }
     }
 }

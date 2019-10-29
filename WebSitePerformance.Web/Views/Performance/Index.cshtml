@@ -4,14 +4,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Start test</h2>
+<h2>Performance test</h2>
 
-@using (Html.BeginForm("ShowStatistic","Performance", FormMethod.Post))
+@using (Html.BeginForm("GetStatistics", "Performance", FormMethod.Post))
 {
     <p>Enter site URL:</p>
     
     <p align="left">
-        @Html.TextBox("siteUrl", "https://a-level.com.ua/")
+        @Html.TextBox("siteUrl", "https://www.ukad-group.com/")
         <input class="actionButtons" type="submit" value="Start test" />
     </p>
 }
