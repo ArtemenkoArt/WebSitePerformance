@@ -5,14 +5,8 @@ namespace WebSitePerformance.Dal.Context
 {
     public class PageDataContext : DbContext , IPageDataContext
     {
-        public DbSet<PageStatisticDal> ProductCategories { get; set; }
+        public DbSet<PageStatisticDal> PageStatisticDal { get; set; }
         
-        public PageDataContext() : base("PageStatistic")
-        {
-        }
-
-        public PageDataContext(string connectionString) : base(connectionString)
-        {
-        }
+        public PageDataContext() : base("PageStatisticConnectionString") {}
     }
 }

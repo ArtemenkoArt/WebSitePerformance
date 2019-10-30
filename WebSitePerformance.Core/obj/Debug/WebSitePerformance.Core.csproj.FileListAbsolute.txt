@@ -40,3 +40,6 @@ d:\Project\WorkTests\20191023_ukad-group\WebSitePerformance\WebSitePerformance.C
 c:\Temp\Project\0_8\WebSitePerformance\WebSitePerformance.Core\bin\Debug\HtmlAgilityPack.dll
 c:\Temp\Project\0_8\WebSitePerformance\WebSitePerformance.Core\bin\Debug\HtmlAgilityPack.pdb
 c:\Temp\Project\0_8\WebSitePerformance\WebSitePerformance.Core\bin\Debug\HtmlAgilityPack.xml
+d:\Project\WorkTests\20191023_ukad-group\WebSitePerformance\WebSitePerformance.Core\bin\Debug\HtmlAgilityPack.dll
+d:\Project\WorkTests\20191023_ukad-group\WebSitePerformance\WebSitePerformance.Core\bin\Debug\HtmlAgilityPack.pdb
+d:\Project\WorkTests\20191023_ukad-group\WebSitePerformance\WebSitePerformance.Core\bin\Debug\HtmlAgilityPack.xml

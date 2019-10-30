@@ -196,3 +196,6 @@ c:\Temp\Project\0_8\WebSitePerformance\WebSitePerformance.Web\bin\EntityFramewor
 c:\Temp\Project\0_8\WebSitePerformance\WebSitePerformance.Web\bin\HtmlAgilityPack.dll
 c:\Temp\Project\0_8\WebSitePerformance\WebSitePerformance.Web\bin\HtmlAgilityPack.pdb
 c:\Temp\Project\0_8\WebSitePerformance\WebSitePerformance.Web\bin\HtmlAgilityPack.xml
+d:\Project\WorkTests\20191023_ukad-group\WebSitePerformance\WebSitePerformance.Web\bin\HtmlAgilityPack.dll
+d:\Project\WorkTests\20191023_ukad-group\WebSitePerformance\WebSitePerformance.Web\bin\HtmlAgilityPack.pdb
+d:\Project\WorkTests\20191023_ukad-group\WebSitePerformance\WebSitePerformance.Web\bin\HtmlAgilityPack.xml
