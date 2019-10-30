@@ -4,7 +4,7 @@
     @Html.ActionLink(@Model.PageUrl, "ShowHistory", "Performance", new { siteUrl = Model.SiteUrl, pageUrl = Model.PageUrl }, null)
     <div class="progress">
 
-        @if (Model.Response <= 200)
+        @if (Model.Response > 0 && Model.Response <= 200)
         {
             <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20"
                  aria-valuemin="0" aria-valuemax="100" style="width:20%">
@@ -22,6 +22,13 @@
         {
             <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60"
                  aria-valuemin="0" aria-valuemax="100" style="width:60%">
+
+            </div>
+        }
+        else if (Model.Response == 0)
+        {
+            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="0"
+                 aria-valuemin="0" aria-valuemax="100" style="width:100%">
 
             </div>
         }

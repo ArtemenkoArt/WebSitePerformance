@@ -76,22 +76,21 @@ namespace WebSitePerformance.Core.Helpers
         private List<string> GetPageList(string url)
         {
             string sitemap = _parser.GetSitemapUrl(url);
-            if (String.IsNullOrEmpty(sitemap))
+            if (!String.IsNullOrEmpty(sitemap))
             {
-                return new List<string>();
+                XmlDocument xmlDoc = new XmlDocument();
+                xmlDoc.Load(sitemap);
+                XmlNodeList xmlList = xmlDoc.GetElementsByTagName("loc");
+
+                var sitemapList = xmlList.Cast<XmlNode>().Select(node => node.InnerText).ToList();
+
+                if (sitemapList.Count != 0)
+                {
+                    return sitemapList;
+                }
             }
-            XmlDocument xmlDoc = new XmlDocument();
-            xmlDoc.Load(sitemap);
-            XmlNodeList xmlList = xmlDoc.GetElementsByTagName("loc");
-
-            var sitemapList =  xmlList.Cast<XmlNode>().Select(node => node.InnerText).ToList();
-
-            if (sitemapList.Count == 0)
-            {
-                return _siteParser.GetWebsiteAllLinks(url);
-            }
-
-            return sitemapList;
+            
+            return _siteParser.GetWebsiteAllLinks(url);
         }
     }
 
