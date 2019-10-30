@@ -34,6 +34,9 @@
     <Reference Include="AutoMapper, Version=9.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.9.0.0\lib\net461\AutoMapper.dll</HintPath>
     </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.11.16.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.11.16\lib\Net45\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
     </Reference>
@@ -52,8 +55,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\IFileParser.cs" />
+    <Compile Include="Helpers\ISiteLinksParser.cs" />
     <Compile Include="Helpers\ISiteStatisticService.cs" />
     <Compile Include="Helpers\RobotsFileParser.cs" />
+    <Compile Include="Helpers\SiteLinksParser.cs" />
     <Compile Include="Helpers\SiteStatisticService.cs" />
     <Compile Include="Infrastructure\CoreKernel.cs" />
     <Compile Include="Infrastructure\CoreMapperConfig.cs" />

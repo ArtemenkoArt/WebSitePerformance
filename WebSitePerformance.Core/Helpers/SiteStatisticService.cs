@@ -14,10 +14,12 @@ namespace WebSitePerformance.Core.Helpers
         private HttpWebRequest _request;
         private HttpWebResponse _response;
         private IFileParser _parser;
+        private ISiteLinksParser _siteParser;
 
-        public SiteStatisticService(IFileParser parser)
+        public SiteStatisticService(IFileParser parser, ISiteLinksParser siteParser)
         {
             _parser = parser;
+            _siteParser = siteParser;
         }
 
         private bool GetPagePerformanse(string pageUrl, out int response)
@@ -81,7 +83,15 @@ namespace WebSitePerformance.Core.Helpers
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.Load(sitemap);
             XmlNodeList xmlList = xmlDoc.GetElementsByTagName("loc");
-            return xmlList.Cast<XmlNode>().Select(node => node.InnerText).ToList();
+
+            var sitemapList =  xmlList.Cast<XmlNode>().Select(node => node.InnerText).ToList();
+
+            if (sitemapList.Count == 0)
+            {
+                return _siteParser.GetWebsiteAllLinks(url);
+            }
+
+            return sitemapList;
         }
     }
 
